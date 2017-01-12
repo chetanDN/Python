@@ -102,4 +102,15 @@ if __name__ == '__main__':
 +-----------------------------------------+---------+---------+
 | Empty Iterable                          |  False  |  True   |
 +-----------------------------------------+---------+---------+
+
+any
+
+Return True if any element of the iterable is true. If the iterable is empty, return False
+Since none of the elements is true, it returns False in this case.
+
+all
+
+Return True if all elements of the iterable are true (or if the iterable is empty).
+Since none of the elements is false, it returns True in this case.
+
 """
