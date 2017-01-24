@@ -87,8 +87,29 @@ if __name__ == '__main__':
     print( any(ch.islower() for ch in s) )
     print( any(ch.isupper() for ch in s) )
     
+"""
+s = raw_input()
+commands = "isalnum() isalpha() isdigit() islower() isupper()"
+print "\n".join(str(any(eval("c."+cmd)  for c in s)) for cmd in commands.split())
+
+
+Eval means evaluate, it interprets a string as code.
+From string "commands" we are getting commands one by one so eval just run summarized sting "c." + "isalnum()" as command.
+eval(c.isalnum()) and in "c" we are getting input value from s = raw_input()
+
+
+You don't need eval here, remember that a method is only a function, which gets self as it's first argument:
+s = input()
+for fn in [str.isalnum, str.isalpha, str.isdigit, str.islower, str.isupper]:
+    print(any(fn(c) for c in s))
 
 """
+    
+    
+    
+"""
+
+
 +-----------------------------------------+---------+---------+
 |                                         |   any   |   all   |
 +-----------------------------------------+---------+---------+
@@ -114,3 +135,5 @@ Return True if all elements of the iterable are true (or if the iterable is empt
 Since none of the elements is false, it returns True in this case.
 
 """
+
+
