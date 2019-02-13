@@ -1,5 +1,5 @@
 def BubbleSort(A):
-    for i in range( len( A ) - 1):
+    for i in range( len( A ) - 1):						#To loop over form 
         # print('i is', i)
         for k in range( i + 1 , len( A ) , 1 ):
             # print('i is {} k is {}'.format(i, k))
