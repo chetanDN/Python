@@ -2,7 +2,7 @@
 
 class Node:
 
-    #constructor
+    #  constructor
     def __init__(self, data=None):
         self.data = data
         self.next = None
@@ -33,6 +33,7 @@ class LinkedList:
         self.length = 0
         self.head = None
 
+
     def add_node(self, node):
         if self.length == 0:
             self.add_at_beg(node)
@@ -40,10 +41,23 @@ class LinkedList:
             self.add_at_end(node)
 
     def add_at_beg(self,node):
+        print('node before', node)
         new_node = node
+        print('new_node before', new_node) #head type before <class 'NoneType'>
         new_node.next = self.head
+        print('head type before', type(self.head)) #head type after <class '__main__.Node'>
+        print('head before', self.head)
         self.head = new_node
+        print('head type after', type(self.head))
+        print('head after', self.head)
         self.length += 1
+
+    def del_at_beg(self):
+        if self.length == 0:
+            print("the list is empty")
+        else:
+            self.head = self.head.next #Python is garbage-collected, so if yo u redu ce the size of your li st, it will r eclaim memory
+            self.length -= 1
 
 
     def add_at_end(self,node):
@@ -58,6 +72,23 @@ class LinkedList:
 
         self.length += 1
 
+    def del_at_end(self):
+        #  Traverse the list and while traversing maintain the previous node ad dress also. By the time we reach the
+        # end of the list , we will have two pointers , one pointing to the tail node and the other pointing to the nod e
+        # before the tail node.
+        if self.length == 0:
+            print(" list is empty")
+        else:
+            current_node = previous_node = self.head
+            while current_node.next != None:
+                previous_node = current_node
+                current_node = current_node.next
+            #  Update previous node s next pointer with NULL.
+
+            previous_node.next = None # previous large list will be garbage collected
+            self.length -= 1
+
+
     def add_at_pos(self, pos, node):
 
         if pos >= (self.length + 1) or pos < 0: #is total length is 4 , new pos could be 0 to 3 and 4 to add new element, if pos is > 4 i.e 5 onwards  print fail condition, and pos cannot be -ve
@@ -71,7 +102,7 @@ class LinkedList:
             else:
                 print('have to add in middle')
                 current_node = self.head
-                print("type of current_node",type(current_node.))
+                print("type of current_node",type(current_node))
                 print("type of node passed",type(node))
                 previous_node = self.head
                 count = 0 #increment current pointer till previous node to inserting node
@@ -108,4 +139,13 @@ ll1.add_node(node2)
 # ll1.add_node(node3)
 ll1.add_at_pos(1, node4)
 
+print('*'*56)
+ll1.print_list()
+
+ll1.del_at_beg()
+ll1.del_at_beg()
+ll1.del_at_beg()
+ll1.del_at_beg()
+
+print('*'*56)
 ll1.print_list()
