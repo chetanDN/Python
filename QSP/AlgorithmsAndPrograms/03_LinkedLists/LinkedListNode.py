@@ -41,15 +41,15 @@ class LinkedList:
             self.add_at_end(node)
 
     def add_at_beg(self,node):
-        print('node before', node)
+        # print('node before', node)
         new_node = node
-        print('new_node before', new_node) #head type before <class 'NoneType'>
+        # print('new_node before', new_node) #head type before <class 'NoneType'>
         new_node.next = self.head
-        print('head type before', type(self.head)) #head type after <class '__main__.Node'>
-        print('head before', self.head)
+        # print('head type before', type(self.head)) #head type after <class '__main__.Node'>
+        # print('head before', self.head)
         self.head = new_node
-        print('head type after', type(self.head))
-        print('head after', self.head)
+        # print('head type after', type(self.head))
+        # print('head after', self.head)
         self.length += 1
 
     def del_at_beg(self):
@@ -94,16 +94,16 @@ class LinkedList:
         if pos >= (self.length + 1) or pos < 0: #if total length is 4 , new pos could be 0 to 3 and 4 to add new element, if pos is > 4 i.e 5 onwards  print fail condition, and pos cannot be -ve
             print("enter valid position, length of ll is ",self.length)
         else:
-            print('entered position is valid')
+            # print('entered position is valid')
             if pos == 0: #even is one ele in ll, it has pos 0 and 1 to add new ele at pos beginning(0) and add at end(1)
                 self.add_at_beg(node)
             elif pos == self.length:
                 self.add_at_end(node)
             else:
-                print('have to add in middle')
+                # print('have to add in middle')
                 current_node = self.head
-                print("type of current_node",type(current_node))
-                print("type of node passed",type(node))
+                # print("type of current_node",type(current_node))
+                # print("type of node passed",type(node))
                 # previous_node = self.head #not required as per logic
                 count = 0 #increment current pointer till previous node to inserting node
                 while count < pos-1 : #traverse to get one node previous's info in current_node
@@ -145,7 +145,7 @@ class LinkedList:
         current_node = self.head
         while current_node != None:
             # node_list.append(current_node.data)
-            print(current_node.data)
+            print(current_node.data,end=' ')
             current_node = current_node.next
 
         # print(node_list)
@@ -160,14 +160,17 @@ node4 = Node(4)
 ll1 = LinkedList()
 ll1.add_node(node1)
 ll1.add_node(node2)
-# ll1.add_node(node3)
+ll1.add_node(node3)
 ll1.add_at_pos(1, node4)
-
-print('*'*56)
+ll1.add_at_beg(Node(5))
+ll1.add_at_end(Node(6))
+print('\n'+'*'*56)
 ll1.print_list()
+print('\n')
+
 
 # ll1.del_at_beg()
 # ll1.del_at_end()
-ll1.del_at_pos(1)
-print('*'*56)
+ll1.del_at_pos(-1)
+print('\n'+'*'*56)
 ll1.print_list()
