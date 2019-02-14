@@ -91,7 +91,7 @@ class LinkedList:
 
     def add_at_pos(self, pos, node):
 
-        if pos >= (self.length + 1) or pos < 0: #is total length is 4 , new pos could be 0 to 3 and 4 to add new element, if pos is > 4 i.e 5 onwards  print fail condition, and pos cannot be -ve
+        if pos >= (self.length + 1) or pos < 0: #if total length is 4 , new pos could be 0 to 3 and 4 to add new element, if pos is > 4 i.e 5 onwards  print fail condition, and pos cannot be -ve
             print("enter valid position, length of ll is ",self.length)
         else:
             print('entered position is valid')
@@ -104,7 +104,7 @@ class LinkedList:
                 current_node = self.head
                 print("type of current_node",type(current_node))
                 print("type of node passed",type(node))
-                previous_node = self.head
+                # previous_node = self.head #not required as per logic
                 count = 0 #increment current pointer till previous node to inserting node
                 while count < pos-1 : #traverse to get one node previous's info in current_node
                     current_node = current_node.next  #current_node.get_next() will not work , type mis match
@@ -114,6 +114,30 @@ class LinkedList:
                 current_node.next = node
 
                 self.length += 1
+
+    def del_at_pos(self, pos):
+
+        if pos >= self.length or pos <0: #here if total length is 4, del position can be 0 to 3 only(not 4)
+            print("enter valid positions")
+        else:
+            if pos == 0:
+                self.del_at_beg()
+            elif pos == self.length:
+                self.del_at_end()
+            else:
+
+                current_node = previous_node = self.head
+                count = 0
+                while current_node.next != None and count < pos : #  in one count less iteration itself loop variable previous is pointing previous and current node is pointing next
+                    count += 1
+                    previous_node = current_node
+                    current_node = current_node.next
+
+                previous_node.next = current_node.next
+                self.length -= 1
+
+
+
 
     def print_list(self):
         # node_list = []
@@ -142,10 +166,8 @@ ll1.add_at_pos(1, node4)
 print('*'*56)
 ll1.print_list()
 
-ll1.del_at_beg()
-ll1.del_at_beg()
-ll1.del_at_beg()
-ll1.del_at_beg()
-
+# ll1.del_at_beg()
+# ll1.del_at_end()
+ll1.del_at_pos(1)
 print('*'*56)
 ll1.print_list()
