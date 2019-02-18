@@ -35,7 +35,7 @@ class LinkedList:
 
 
     def add_node(self, node):
-        if self.length == 0:
+        if self.length == 0: # instead check self.head == None
             self.add_at_beg(node)
         else:
             self.add_at_end(node)
