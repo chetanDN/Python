@@ -7,35 +7,23 @@ class Node:
         self.data = data
         self.next = None
 
-    #setter method for data
-    def set_data(self, data):
-        self.data = data
-
-    #getter method for data
-    def get_data(self):
-        return self.data
-
-    #method for setting the next field
-    def set_next(self, next):
-        self.next = next
-
-    #method for getting the next field
-    def get_next(self):
-        return self.next
-
-    #check next node exists
-    def has_next(self):
-        return self.next != None
-
 class LinkedList:
 
     def __init__(self):
         self.length = 0
         self.head = None
 
+    def print_list_from(self,node):
+        new_node = node
+        while new_node.next != None:
+            print("new_node.data :",new_node.data)
+            new_node = new_node.next
 
-    def add_node(self, node):
-        if self.length == 0: # instead check self.head == None
+        #for final node or if only one node
+        print("new_node.data :", new_node.data)
+
+    def add_node(self, node): #appending node
+        if self.length == 0:
             self.add_at_beg(node)
         else:
             self.add_at_end(node)
@@ -56,7 +44,16 @@ class LinkedList:
         if self.length == 0:
             print("the list is empty")
         else:
+            print("printing LL before")
+            self.print_list_from(self.head)
+            print("id of ll1",id(ll1))
+            temp =self.head
+            temp2 = temp
             self.head = self.head.next #Python is garbage-collected, so if yo u redu ce the size of your li st, it will r eclaim memory
+            del temp
+            print("printing LL after")
+            self.print_list_from(temp2)
+            print("id of ll1", id(ll1))
             self.length -= 1
 
 
@@ -141,7 +138,7 @@ class LinkedList:
 
     def print_list(self):
         # node_list = []
-
+        print("print_list in TestLL.py")
         current_node = self.head
         while current_node != None:
             # node_list.append(current_node.data)
@@ -151,10 +148,12 @@ class LinkedList:
         # print(node_list)
 
 
+
+
+
 node1 = Node(1)
 node2 = Node(2)
-node3 = Node()
-node3.set_data(3)
+node3 = Node(3)
 node4 = Node(4)
 
 ll1 = LinkedList()
@@ -171,6 +170,7 @@ print('\n')
 
 # ll1.del_at_beg()
 # ll1.del_at_end()
-ll1.del_at_pos(-1)
+# ll1.del_at_pos()
+ll1.del_at_beg()
 print('\n'+'*'*56)
 ll1.print_list()
